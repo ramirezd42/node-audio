@@ -8,6 +8,7 @@
     "autogypi": "autogypi",
     "node-gyp": "node-gyp",
     "build:native": "autogypi -r build && node-gyp configure build",
+    "preinstall": "git submodule update --init --recursive",
     "install": "(npm run build:native || echo Warning: problems with native build)"
   },
   "author": "",
