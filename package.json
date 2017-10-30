@@ -1,6 +1,6 @@
 {
   "name": "node-audio",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "node-gyp": "node-gyp",
     "build:native": "autogypi && node-gyp configure build",
     "xcodeproj": "node-gyp configure -- -f xcode",
-    "preinstall": "git submodule update --init --recursive",
     "install": "(npm run build:native || echo Warning: problems with native build)"
   },
   "author": "",
