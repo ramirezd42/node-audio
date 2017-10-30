@@ -6,7 +6,7 @@
 The eventual goal of this project is to expand upon the possibilites offered by the web-audio-api for Node.js based platforms by making it easier to develop custom AudioNode types to suit your needs.
 
 ## WARNING!!!: 
-This library is in an extremely experimental state. Large portions of functionally have yet to be implemented and it is currently only buildable for MacOSX. However, since everything is built with cross-platform libraries (namely Boost, LabSound and JUCE), supporting other operating systems shouldn't be too difficult if there's interest. That said...
+This library is in an extremely experimental state. Large portions of functionally have yet to be implemented and it is currently only buildable for MacOSX. However, since everything is built with cross-platform libraries (namely [Boost](http://www.boost.org/), [LabSound](http://labsound.io) and [JUCE](https://www.juce.com/), supporting other operating systems shouldn't be too difficult if there's interest. That said...
 
 ## How can I help
 If you find **node-audio** helpful or want to help get it to a point where you think it COULD be helpful, there's a couple of ways you can contribute:
