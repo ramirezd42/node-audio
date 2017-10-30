@@ -1,3 +1,9 @@
 [submodule "third_party/LabSound"]
 	path = third_party/LabSound
 	url = https://github.com/LabSound/LabSound.git
+[submodule "third_party/JUCE"]
+	path = third_party/JUCE
+	url = https://github.com/WeAreROLI/JUCE.git
+[submodule "third_party/vst3sdk"]
+	path = third_party/vst3sdk
+	url = https://github.com/steinbergmedia/vst3sdk.git
