@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "autogypi": "autogypi",
     "node-gyp": "node-gyp",
     "build:native": "autogypi -r build && node-gyp configure build",
@@ -19,8 +18,5 @@
     "nan": "^2.6.2",
     "nbind": "^0.3.13",
     "node-gyp": "^3.6.2"
-  },
-  "devDependencies": {
-    "jest": "^20.0.4"
   }
 }
