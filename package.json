@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "autogypi": "autogypi",
     "node-gyp": "node-gyp",
-    "build:native": "autogypi -r build && node-gyp configure build",
+    "build:native": "autogypi && node-gyp configure build",
+    "xcodeproj": "node-gyp configure -- -f xcode",
     "preinstall": "git submodule update --init --recursive",
     "install": "(npm run build:native || echo Warning: problems with native build)"
   },

@@ -2,9 +2,12 @@
 #include <iostream>
 
 #include "LabSound/extended/LabSound.h"
+#include "extended/PluginNode.h"
+
 #include "nbind/nbind.h"
 
 using namespace lab;
+using namespace NodeAudio;
 
 NBIND_CLASS(AudioContext) {
   method(isInitialized);
@@ -68,4 +71,9 @@ NBIND_CLASS(StereoPannerNode) {
   construct<float>();
   inherit(AudioNode);
   method(pan);
+}
+
+NBIND_CLASS(PluginNode) {
+  construct<std::string, float>();
+  inherit(AudioNode);
 }
