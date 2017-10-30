@@ -5,9 +5,9 @@
 [![npm version](https://badge.fury.io/js/node-audio.svg)](https://badge.fury.io/js/node-audio)
 
 ## What Is It?
-**node-audio** is a graph-based audio processing library for Node.Js. It's very similar to the web-audio api. In fact it in its current iteration it is little more than a binding for [LabSound](https://github.com/LabSound/LabSound) with some sugar on top!
+**node-audio** is a graph-based audio processing library for Node.Js. It's very similar to the web-audio api. In fact in its current iteration it is little more than a binding for [LabSound](https://github.com/LabSound/LabSound) with some sugar on top!
 
-The eventual goal of this project is to expand upon the possibilites offered by the web-audio-api for Node.js based platforms by making it easier to develop custom AudioNode types to suit your needs.
+The eventual goal of this project is to expand upon the possibilites offered by the Web Audio API for Node.js based platforms by making it easier to develop custom AudioNode types to suit your specific needs.
 
 ## WARNING!!!: 
 This library is in an extremely experimental state. Large portions of functionally have yet to be implemented and it is currently only buildable for MacOSX. However, since everything is built with cross-platform libraries (namely [Boost](http://www.boost.org/), [LabSound](http://labsound.io) and [JUCE](https://www.juce.com/), supporting other operating systems shouldn't be too difficult if there's interest. That said...
@@ -26,10 +26,10 @@ I'm developing this as a fun side project in my spare time. If you want to suppo
 
 ## What do we have so far?
 ### Graph API
-Currently only a small subset of the web-audio-api is available. In lieue of api documentation for the time being you can check out the `src/module.cc` to see what bindings are being made available.
+Currently only a small subset of the web-audio-api is available. In lieue of api documentation for the time being you can check out the `src/module.cc` file to see what bindings are being made available.
 
 ### PluginNode
-The only custom node available right now is a "PluginNode". This can be used to instantiate an audio plugin and connect it to the graph as you would any other node. It currently supports only VST3 plugins, but the host process is built with JUCE so adding support for other formats like VST and AudioUnit shouldn't be too much work.
+The only custom node type available right now is a "PluginNode". This can be used to instantiate an audio plugin and connect it to the graph as you would any other node. It currently supports only VST3 plugins, but the host process is built with JUCE so adding support for other formats like VST and AudioUnit shouldn't be too much work.
 
 ## What's Next
 The next things I plan to tackle are: 
