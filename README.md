@@ -2,6 +2,8 @@
   <img width="342" src="https://raw.githubusercontent.com/ramirezd42/node-audio/master/logo.png">
 </p>
 
+[![npm version](https://badge.fury.io/js/node-audio.svg)](https://badge.fury.io/js/node-audio)
+
 ## What Is It?
 **node-audio** is a graph-based audio processing library for Node.Js. It's very similar to the web-audio api. In fact it in its current iteration it is little more than a binding for [LabSound](https://github.com/LabSound/LabSound) with some sugar on top!
 
