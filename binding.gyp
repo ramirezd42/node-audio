@@ -27,7 +27,7 @@
         'third_party/boost_1_65_1'
       ],
       'sources': [
-        'src/extended/PluginHostChildProcess/Main.cc',
+        'src/extended/PluginHostChildProcess/main.cc',
         'src/extended/PluginHostChildProcess/MainComponent.cc',
         'src/extended/PluginHostChildProcess/IPCAudioIODevice.cc'
       ],
