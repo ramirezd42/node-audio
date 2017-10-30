@@ -111,7 +111,6 @@
     "third_party/LabSound/src/core/RealtimeAnalyser.cpp",
     "third_party/LabSound/src/core/WaveShaperNode.cpp",
     "third_party/LabSound/src/core/WaveTable.cpp",
-    "third_party/LabSound/third_party/json11/src/json11.cpp",
     "third_party/LabSound/third_party/kissfft/src/kiss_fft.cpp",
     "third_party/LabSound/third_party/kissfft/src/kiss_fftr.cpp",
     "third_party/LabSound/third_party/STK/src/STKInlineCompile.cpp",

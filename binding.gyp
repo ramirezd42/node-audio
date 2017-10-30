@@ -1,26 +1,47 @@
 {
   "targets": [
     {
-      "includes": [
-        "auto.gypi",
-        "labsound.gypi",
-        "sources.gypi",
+      'target_name': 'common',
+      'type': 'static_library',
+      'includes': [
+        'juce.gypi'
       ],
+      'configurations': {
+        'Debug': {
+          'defines': ['DEBUG=1', '_DEBUG=1', 'JUCE_DEBUG=1', '__MACOSX_CORE__']
+        },
+        'Release': {
+          'defines': ['NDEBUG=1', '_NDEBUG=1', 'JUCE_DEBUG=0', '__MACOSX_CORE__']
+        }
+      }
+    },
 
-      "sources": [
-        "src/module.cc"
+    {
+      'target_name': 'plugin-host-child-process',
+      'type': 'executable',
+      'dependencies': [
+        'common'
       ],
-     
-      "defines": [
-        'OPUS_BUILD',
-        'USE_ALLOCA'
+      'include_dirs': [
+        'third_party/JUCE/modules',
+        'third_party/boost_1_65_1'
       ],
+      'sources': [
+        'src/extended/PluginHostChildProcess/Main.cc',
+        'src/extended/PluginHostChildProcess/MainComponent.cc',
+        'src/extended/PluginHostChildProcess/IPCAudioIODevice.cc'
+      ],
+      'configurations': {
+        'Debug': {
+          'defines': ['DEBUG=1', '_DEBUG=1', 'JUCE_DEBUG=1', '__MACOSX_CORE__', 'OPUS_BUILD', 'USE_ALLOCA']
+        },
+        'Release': {
+          'defines': ['NDEBUG=1', '_NDEBUG=1', 'JUCE_DEBUG=0', '__MACOSX_CORE__', 'OPUS_BUILD', 'USE_ALLOCA']
+        }
+      },
       "conditions": [[ 
         'OS=="mac"', 
         { 
-          'defines': [ 
-            '__MACOSX_CORE__' 
-          ], 
           'link_settings': { 
             'libraries': [ 
               '$(SDKROOT)/System/Library/Frameworks/Accelerate.framework', 
@@ -28,7 +49,58 @@
               '$(SDKROOT)/System/Library/Frameworks/AudioUnit.framework', 
               '$(SDKROOT)/System/Library/Frameworks/Carbon.framework', 
               '$(SDKROOT)/System/Library/Frameworks/Cocoa.framework', 
-              '$(SDKROOT)/System/Library/Frameworks/CoreAudio.framework'
+              '$(SDKROOT)/System/Library/Frameworks/CoreAudio.framework',
+            ] 
+          }, 
+          'xcode_settings': { 
+            'GCC_ENABLE_CPP_EXCEPTIONS': 'YES', 
+            'GCC_ENABLE_CPP_RTTI': 'YES' 
+          } 
+        } 
+      ]]
+    },
+
+    {
+      'target_name': 'node-audio',
+     
+      'include_dirs': [
+        'third_party/JUCE/modules',
+        'third_party/boost_1_65_1'
+      ],
+
+      "includes": [
+        "auto.gypi",
+        "labsound.gypi"
+      ],
+      "sources": [
+        "src/module.cc",
+        "src/NodeAudio.cc",
+        "src/SoundBuffer.cc",
+        "src/extended/PluginNode.cc",
+        "src/extended/PluginHostParentProcess/PluginHostParentProcess.cc"
+      ],
+      'dependencies': [
+        'common'
+      ],
+      'configurations': {
+        'Debug': {
+          'defines': ['DEBUG=1', '_DEBUG=1', 'JUCE_DEBUG=1', '__MACOSX_CORE__', 'OPUS_BUILD', 'USE_ALLOCA']
+        },
+        'Release': {
+          'defines': ['NDEBUG=1', '_NDEBUG=1', 'JUCE_DEBUG=0', '__MACOSX_CORE__', 'OPUS_BUILD', 'USE_ALLOCA']
+        }
+      },
+      "conditions": [[ 
+        'OS=="mac"', 
+        { 
+          'link_settings': { 
+            'libraries': [ 
+              '$(SDKROOT)/System/Library/Frameworks/Accelerate.framework', 
+              '$(SDKROOT)/System/Library/Frameworks/AudioToolbox.framework', 
+              '$(SDKROOT)/System/Library/Frameworks/AudioUnit.framework', 
+              '$(SDKROOT)/System/Library/Frameworks/Carbon.framework', 
+              '$(SDKROOT)/System/Library/Frameworks/Cocoa.framework', 
+              '$(SDKROOT)/System/Library/Frameworks/CoreAudio.framework',
             ] 
           }, 
           'xcode_settings': { 
