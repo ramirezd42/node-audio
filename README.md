@@ -10,7 +10,7 @@ The eventual goal of this project is to expand upon the possibilites offered by 
 ## WARNING!!!: 
 This library is in an extremely experimental state. Large portions of functionally have yet to be implemented and it is currently only buildable for MacOSX. However, since everything is built with cross-platform libraries (namely [Boost](http://www.boost.org/), [LabSound](http://labsound.io) and [JUCE](https://www.juce.com/), supporting other operating systems shouldn't be too difficult if there's interest. That said...
 
-## How can I help
+## How can I help?
 If you find **node-audio** helpful or want to help get it to a point where you think it COULD be helpful, there's a couple of ways you can contribute:
 
 ### Submit a PR:
@@ -42,12 +42,7 @@ I would really like to get to the point where developers can create custom node 
 
 ## Installation
 
-### Acquire the Steinberg VST3 SDK (3.6.7+)
-Due to licensing concerns I am currently not bundling the VST3 SDK along with this project. You will need to download the SDK from [Steinbergs's Website](http://www.steinberg.net/en/company/developers.html) and place it at `~/SDKs/VST3`
-
-### NPM Install
-Once the VST3 SDK is in place you can npm install this as you would any other node package.
-
+Installation can be done via npm. Warning: this currently takes a LONG time to build!
 ```
 > npm install --save node-audio
 ```
