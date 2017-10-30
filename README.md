@@ -56,7 +56,7 @@ Once the VST3 SDK is in place you can npm install this as you would any other no
 The example below will play back an audio file, and manipulate the audio via a VST3 plugin a pan node and a gain node:
 
 ```javascript
-const { NodeAudio, StereoPannerNode, GainNode, SoundBuffer } = require('node-audio')
+const { NodeAudio, StereoPannerNode, GainNode, SoundBuffer, PluginNode } = require('node-audio')
 
 const ctx = NodeAudio.makeAudioContext()
 
@@ -64,12 +64,15 @@ const panNode = new StereoPannerNode(ctx.sampleRate())
 panNode.pan().setValue(0)
 
 const gainNode = new GainNode(ctx.sampleRate())
-gainNode.gain().setValue(0.1)
+gainNode.gain().setValue(0.5)
+
+const pluginNode = new PluginNode('/Path/to/plugin.vst3', ctx.sampleRate())
 
 gainNode.connect(ctx, panNode, 0, 0)
-panNode.connect(ctx, ctx.destination(), 0, 0)
+panNode.connect(ctx, pluginNode, 0, 0)
+pluginNode.connect(ctx, ctx.destination(), 0, 0)
 
-const buffer = new SoundBuffer("audio_file.wav", ctx.sampleRate())
+const buffer = new SoundBuffer('/Path/to/audiofile.wav', ctx.sampleRate())
 buffer.playOnNode(ctx, gainNode, 0)
 
 while(true){}
