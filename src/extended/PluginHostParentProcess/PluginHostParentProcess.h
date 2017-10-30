@@ -6,6 +6,7 @@
 #include <boost/interprocess/mapped_region.hpp>
 #include "../Shared/SharedMemoryBuffer.h"
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "../../NodeAudioConfig.h"
 
 namespace NodeAudio {
 
@@ -46,7 +47,7 @@ namespace NodeAudio {
 
       void openProcess(std::string pluginPath, std::string shmemFile)
       {
-        juce::String dir = juce::File::getCurrentWorkingDirectory().getFullPathName();
+        juce::String dir = juce::String(NodeAudioConfig::modulePath); 
         
         #ifdef DEBUG
           juce::String exec = dir + "/build/Debug/plugin-host-child-process";

@@ -74,6 +74,7 @@
       ],
       "sources": [
         "src/module.cc",
+        "src/NodeAudioConfig.cc",
         "src/NodeAudio.cc",
         "src/SoundBuffer.cc",
         "src/extended/PluginNode.cc",

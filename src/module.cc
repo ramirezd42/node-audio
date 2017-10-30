@@ -3,6 +3,7 @@
 
 #include "LabSound/extended/LabSound.h"
 #include "extended/PluginNode.h"
+#include "NodeAudioConfig.h"
 
 #include "nbind/nbind.h"
 
