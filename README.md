@@ -21,9 +21,6 @@ Missing something you need to make this a viable tool for your use case? Submit 
 ### Create an issue
 Need something, but don't have to time to contribute or aren't sure how? Open up an issue, I'd love to talk about it!
 
-### Support me on patreon
-I'm developing this as a fun side project in my spare time. If you want to support ongoing developmont for this project and aren't able to submit a PR or don't have an issue to discuss. You can always [support me on Patreon](https://www.patreon.com/bePatron?u=8257347).
-
 ## What do we have so far?
 ### Graph API
 Currently only a small subset of the web-audio-api is available. In lieue of api documentation for the time being you can check out the `src/module.cc` file to see what bindings are being made available.
