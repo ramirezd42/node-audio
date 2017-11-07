@@ -3,6 +3,10 @@
 #define PluginNode_h
 
 #include <string>
+#include <boost/uuid/uuid.hpp>            // uuid class
+#include <boost/uuid/uuid_generators.hpp> // generators
+#include <boost/uuid/uuid_io.hpp>
+
 #include "LabSound/core/AudioNode.h"
 // #include "JuceLibraryCode/JuceHeader.h"
 #include "PluginHostParentProcess/PluginHostParentProcess.h"
@@ -27,6 +31,7 @@ namespace NodeAudio {
     virtual double latencyTime() const override { return 0; }
 
     std::string pluginPath;
+    boost::uuids::uuid proc_uuid;
     PluginHostParentProcess hostProc;
   };
 }

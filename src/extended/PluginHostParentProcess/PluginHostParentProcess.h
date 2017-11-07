@@ -43,6 +43,7 @@ namespace NodeAudio {
   private:
 
     struct ProcessHandle {
+      ProcessHandle() {}
       ~ProcessHandle() { if (process.isRunning()) closeProcess(); }
 
       void openProcess(std::string pluginPath, std::string shmemFile)

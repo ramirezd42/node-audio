@@ -1,5 +1,4 @@
-**/.DS_STORE
-node_modules
-build
-.vscode
-third_party/VST3
+.DS_STORE
+node_modules/
+build/
+.vscode/
