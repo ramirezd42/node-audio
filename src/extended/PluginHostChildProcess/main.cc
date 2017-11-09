@@ -10,6 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "IPCAudioIODevice.h"
+#include "../Shared/PluginInterface.h"
 
 //==============================================================================
 class PluginHostApplication : public JUCEApplication {
@@ -33,8 +34,8 @@ public:
     // code..
     StringArray params = this->getCommandLineParameterArray();
     String pluginPath = params[0];
-    String socketAddress = params[1];
-    mainWindow = new MainWindow("Plugin Host", pluginPath, socketAddress);
+    String pluginUUID = params[1];
+    mainWindow = new MainWindow("Plugin Host", pluginPath, pluginUUID);
   }
 
   void shutdown() override {
@@ -62,10 +63,11 @@ public:
       This class implements the desktop window that contains an instance of
       our MainContentComponent class.
   */
-  class MainWindow : public DocumentWindow {
+  class MainWindow : public DocumentWindow, private NodeAudio::PluginInterfaceHost {
   public:
-    MainWindow(String name, String pluginPath, String socketAddress)
-        : DocumentWindow(name, Colours::lightgrey, DocumentWindow::allButtons) {
+    MainWindow(String name, String pluginPath, String pluginUUID)
+        : DocumentWindow(name, Colours::lightgrey, DocumentWindow::allButtons),
+          PluginInterfaceHost(pluginUUID.toStdString()) {
       formatManager.addDefaultFormats();
       setUsingNativeTitleBar(true);
       setResizable(true, true);
@@ -90,7 +92,7 @@ public:
       ScopedPointer<XmlElement> savedAudioState =
           appProperties->getUserSettings()->getXmlValue("audioDeviceState");
 
-      IPCAudioIODeviceType *ipcType = new IPCAudioIODeviceType(socketAddress);
+      IPCAudioIODeviceType *ipcType = new IPCAudioIODeviceType(pluginUUID);
       deviceManager.addAudioDeviceType(ipcType);
       if (deviceManager.getCurrentAudioDeviceType() != "IPC") {
         deviceManager.setCurrentAudioDeviceType("IPC", true);
@@ -132,12 +134,21 @@ public:
 
     }
 
+    void hideGUI() override {
+     removeFromDesktop();
+    }
+
+    void displayGUI() override {
+      addToDesktop();
+    }
+
     void closeButtonPressed() override {
       // This is called when the user tries to close this window. Here, we'll
       // just
       // ask the app to quit when this happens, but you can change this to do
       // whatever you need.
-      JUCEApplication::getInstance()->systemRequestedQuit();
+      // JUCEApplication::getInstance()->systemRequestedQuit();
+      removeFromDesktop();
     }
 
     /* Note: Be careful if you override any DocumentWindow methods - the base

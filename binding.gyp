@@ -6,6 +6,9 @@
       'includes': [
         'juce.gypi'
       ],
+      'sources': [
+        'src/extended/Shared/PluginInterface.cc'
+      ],
       'configurations': {
         'Debug': {
           'defines': ['DEBUG=1', '_DEBUG=1', 'JUCE_DEBUG=1', '__MACOSX_CORE__']

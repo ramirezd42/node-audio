@@ -77,4 +77,6 @@ NBIND_CLASS(StereoPannerNode) {
 NBIND_CLASS(PluginNode) {
   construct<std::string, float>();
   inherit(AudioNode);
+  method(displayGUI);
+  method(hideGUI);
 }

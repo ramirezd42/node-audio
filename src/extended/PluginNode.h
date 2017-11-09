@@ -10,6 +10,7 @@
 #include "LabSound/core/AudioNode.h"
 // #include "JuceLibraryCode/JuceHeader.h"
 #include "PluginHostParentProcess/PluginHostParentProcess.h"
+#include "Shared/PluginInterface.h"
 
 namespace NodeAudio {
   class PluginNode: public lab::AudioNode {
@@ -33,6 +34,7 @@ namespace NodeAudio {
     std::string pluginPath;
     boost::uuids::uuid proc_uuid;
     PluginHostParentProcess hostProc;
+    PluginInterface interface;
   };
 }
 
