@@ -10,7 +10,8 @@ using namespace NodeAudio;
 PluginNode::PluginNode(std::string _pluginPath, float sampleRate): AudioNode(sampleRate),
                                                                    proc_uuid(boost::uuids::random_generator()()),
                                                                    pluginPath(_pluginPath),
-                                                                   hostProc(_pluginPath, std::string("__NODE_AUDIO_SHMEM__").append(boost::uuids::to_string(proc_uuid))) {
+                                                                   interface(boost::uuids::to_string(proc_uuid)),
+                                                                   hostProc(_pluginPath, boost::uuids::to_string(proc_uuid)) {
   addInput(std::unique_ptr<AudioNodeInput>(new AudioNodeInput(this)));
   addOutput(std::unique_ptr<AudioNodeOutput>(new AudioNodeOutput(this, 2)));
   initialize();
@@ -68,8 +69,8 @@ void PluginNode::uninitialize() {
 }
 
 void PluginNode::displayGUI() {
-  // TODO: Implement stub
+  interface.displayGUI();
 }
 void PluginNode::hideGUI() {
-  // TODO: Implement stub
+  interface.hideGUI();
 }
