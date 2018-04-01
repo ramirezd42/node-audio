@@ -71,3 +71,23 @@ buffer.playOnNode(ctx, gainNode, 0)
 
 while(true){}
 ```
+---
+## Development
+
+Clone this repository including submodules.
+
+```sh
+git clone --recursive git://github.com/ramirezd42/node-audio.git
+```
+
+Install dependencies and build native modules.
+
+```sh
+npm install
+```
+
+Rebuild native modules after making changes.
+
+```sh
+npm run build:native
+```
