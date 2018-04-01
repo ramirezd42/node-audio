@@ -100,13 +100,50 @@ public:
 
       deviceManager.initialise(256, 256, savedAudioState, true);
 
+      AudioPluginInstance *instance;
       OwnedArray<juce::PluginDescription> foundPlugins;
-      VST3PluginFormat format;
-      format.findAllTypesForFile(foundPlugins, pluginPath);
 
-      description = foundPlugins[0];
-      AudioPluginInstance *instance = format.createInstanceFromDescription(
+      #if (JUCE_PLUGINHOST_VST3 && (JUCE_MAC || JUCE_WINDOWS))
+      if (pluginPath.endsWith(".vst3")) {
+
+        VST3PluginFormat formatVST;
+
+        formatVST.findAllTypesForFile(foundPlugins, pluginPath);
+        description = foundPlugins[0];
+        instance = formatVST.createInstanceFromDescription(
+           *description, setup.sampleRate, setup.bufferSize);
+      }
+      #endif
+
+      #if (JUCE_PLUGINHOST_AU && (JUCE_MAC || JUCE_IOS))
+      if (pluginPath.endsWith(".component")) {
+
+        AudioUnitPluginFormat formatAU;
+
+        formatAU.findAllTypesForFile(foundPlugins, pluginPath);
+        description = foundPlugins[0];
+        instance = formatAU.createInstanceFromDescription(
           *description, setup.sampleRate, setup.bufferSize);
+      }
+      #endif
+
+      #if (JUCE_PLUGINHOST_LADSPA && JUCE_LINUX)
+      if (pluginPath.endsWith(".so")) {
+
+        LADSPAPluginFormat formatLADSPA;
+
+        formatLADSPA.findAllTypesForFile(foundPlugins, pluginPath);
+        description = foundPlugins[0];
+        instance = formatLADSPA.createInstanceFromDescription(
+          *description, setup.sampleRate, setup.bufferSize);
+      }
+      #endif
+
+      // Plugin not found
+      if (instance == nullptr) {
+        // TODO: this->shutdown();
+        return;
+      }
 
       // i/o graph nodes
       inputProcessor = new AudioProcessorGraph::AudioGraphIOProcessor(
