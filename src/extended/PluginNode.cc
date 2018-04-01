@@ -74,3 +74,6 @@ void PluginNode::displayGUI() {
 void PluginNode::hideGUI() {
   interface.hideGUI();
 }
+void PluginNode::shutdown() {
+  interface.shutdown();
+}
