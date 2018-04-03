@@ -9,8 +9,8 @@
 
 The eventual goal of this project is to expand upon the possibilites offered by the Web Audio API for Node.js based platforms by making it easier to develop custom AudioNode types to suit your specific needs.
 
-## WARNING!!!: 
-This library is in an extremely experimental state. Large portions of functionally have yet to be implemented and it is currently only buildable for MacOSX. However, since everything is built with cross-platform libraries (namely [Boost](http://www.boost.org/), [LabSound](http://labsound.io) and [JUCE](https://www.juce.com/), supporting other operating systems shouldn't be too difficult if there's interest. That said...
+## WARNING!!!:
+This library is in an extremely experimental state. Large portions of functionally have yet to be implemented and it is currently only buildable for MacOSX. However, since everything is built with cross-platform libraries (namely [Boost](http://www.boost.org/), [LabSound](http://labsound.io) and [JUCE](https://www.juce.com/)), supporting other operating systems shouldn't be too difficult if there's interest. That said...
 
 ## How can I help?
 If you find **node-audio** helpful or want to help get it to a point where you think it COULD be helpful, there's a couple of ways you can contribute:
@@ -31,7 +31,7 @@ The only custom node type available right now is a "PluginNode". This can be use
 ## What's Next
 The next things I plan to tackle are: 
 
-### Get closer to feature compatability with current web-audio-api
+### Get closer to feature compatibility with current web-audio-api
 I think now that the foundation is laid this is more or less busy work. One of those things that's hard to justify until you need to use a certain piece of the api that's not available. PRs especially welcome here!
 
 ### Develop some means of support for developing and packaging custom nodes as npm packages.
@@ -70,4 +70,24 @@ const buffer = new SoundBuffer('/Path/to/audiofile.wav', ctx.sampleRate())
 buffer.playOnNode(ctx, gainNode, 0)
 
 while(true){}
+```
+---
+## Development
+
+Clone this repository including submodules.
+
+```sh
+git clone --recursive git://github.com/ramirezd42/node-audio.git
+```
+
+Install dependencies and build native modules.
+
+```sh
+npm install
+```
+
+Rebuild native modules after making changes.
+
+```sh
+npm run build:native
 ```
