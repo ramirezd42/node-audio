@@ -31,7 +31,7 @@ The only custom node type available right now is a "PluginNode". This can be use
 ## What's Next
 The next things I plan to tackle are: 
 
-### Get closer to feature compatibility with current web-audio-api
+### Get closer to feature parity with current web-audio-api
 I think now that the foundation is laid this is more or less busy work. One of those things that's hard to justify until you need to use a certain piece of the api that's not available. PRs especially welcome here!
 
 ### Develop some means of support for developing and packaging custom nodes as npm packages.
