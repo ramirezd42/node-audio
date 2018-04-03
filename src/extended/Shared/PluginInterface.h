@@ -12,6 +12,7 @@ namespace NodeAudio {
 
     void displayGUI();
     void hideGUI();
+    void shutdown();
 
     void connectionMade() override {}
     void connectionLost() override {}
@@ -33,6 +34,7 @@ namespace NodeAudio {
 
     virtual void displayGUI() = 0;
     virtual void hideGUI() = 0;
+    virtual void shutdown() = 0;
   private:
     const std::string& pipeName;
     int receiveMessageTimeoutMs = 200;

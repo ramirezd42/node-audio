@@ -79,4 +79,5 @@ NBIND_CLASS(PluginNode) {
   inherit(AudioNode);
   method(displayGUI);
   method(hideGUI);
+  method(shutdown);
 }

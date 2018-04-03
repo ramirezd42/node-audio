@@ -15,19 +15,20 @@
 namespace NodeAudio {
   class PluginNode: public lab::AudioNode {
 
-  public: 
+  public:
     PluginNode(std::string _pluginPath, float sampleRate);
     void displayGUI();
     void hideGUI();
+    void shutdown();
     virtual ~PluginNode();
 
   private:
     virtual void process(lab::ContextRenderLock &, size_t framesToProcess) override;
     virtual void reset(lab::ContextRenderLock &) override;
-    
+
     virtual void initialize() override;
     virtual void uninitialize() override;
-    
+
     virtual double tailTime() const override { return 0; }
     virtual double latencyTime() const override { return 0; }
 
